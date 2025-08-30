@@ -1,0 +1,478 @@
+/* Enhanced Responsive Design for Connect Digitals */
+
+/* ===== GLOBAL RESPONSIVE IMPROVEMENTS ===== */
+
+/* Fluid typography using clamp for better scaling */
+:root {
+  --fluid-text-xs: clamp(0.75rem, 2vw, 0.875rem);
+  --fluid-text-sm: clamp(0.875rem, 2.5vw, 1rem);
+  --fluid-text-base: clamp(1rem, 3vw, 1.125rem);
+  --fluid-text-lg: clamp(1.125rem, 3.5vw, 1.25rem);
+  --fluid-text-xl: clamp(1.25rem, 4vw, 1.5rem);
+  --fluid-text-2xl: clamp(1.5rem, 5vw, 2rem);
+  --fluid-text-3xl: clamp(2rem, 6vw, 2.5rem);
+  --fluid-text-4xl: clamp(2.5rem, 7vw, 3rem);
+  --fluid-text-5xl: clamp(3rem, 8vw, 4rem);
+  
+  /* Fluid spacing */
+  --fluid-spacing-xs: clamp(0.5rem, 1vw, 0.75rem);
+  --fluid-spacing-sm: clamp(0.75rem, 2vw, 1rem);
+  --fluid-spacing-md: clamp(1rem, 3vw, 1.5rem);
+  --fluid-spacing-lg: clamp(1.5rem, 4vw, 2rem);
+  --fluid-spacing-xl: clamp(2rem, 5vw, 3rem);
+  --fluid-spacing-2xl: clamp(3rem, 6vw, 4rem);
+  
+  /* Container max-widths */
+  --container-sm: min(100% - 2rem, 640px);
+  --container-md: min(100% - 2rem, 768px);
+  --container-lg: min(100% - 2rem, 1024px);
+  --container-xl: min(100% - 2rem, 1200px);
+}
+
+/* ===== ENHANCED FORM RESPONSIVENESS ===== */
+
+/* Contact form responsive improvements */
+.contact-form {
+  width: 100%;
+  max-width: var(--container-md);
+  margin: 0 auto;
+  padding: var(--fluid-spacing-lg);
+}
+
+/* Form grid responsive layout */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--fluid-spacing-md);
+  margin-bottom: var(--fluid-spacing-md);
+}
+
+/* Input field responsive improvements */
+.modern-input-group {
+  position: relative;
+  margin-bottom: var(--fluid-spacing-md);
+}
+
+.input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.input-wrapper input,
+.input-wrapper textarea {
+  width: 100%;
+  padding: var(--fluid-spacing-md);
+  padding-left: 3rem;
+  font-size: var(--fluid-text-base);
+  border: 2px solid #e1e5e9;
+  border-radius: 0.75rem;
+  transition: all 0.3s ease;
+  background: #fff;
+  min-height: 3.5rem;
+}
+
+.input-wrapper textarea {
+  min-height: 8rem;
+  resize: vertical;
+  padding-top: var(--fluid-spacing-md);
+}
+
+.input-icon {
+  position: absolute;
+  left: var(--fluid-spacing-sm);
+  top: 50%;
+  transform: translateY(-50%);
+  color: #8a8f98;
+  z-index: 2;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.input-wrapper textarea + .input-icon {
+  top: var(--fluid-spacing-md);
+  transform: none;
+}
+
+/* Floating label responsive positioning */
+.modern-floating-label {
+  position: absolute;
+  left: 3rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #6c757d;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  background: transparent;
+  padding: 0 0.25rem;
+  font-size: var(--fluid-text-base);
+}
+
+.input-wrapper textarea + .modern-floating-label {
+  top: var(--fluid-spacing-md);
+  transform: none;
+}
+
+.input-wrapper input:focus + .modern-floating-label,
+.input-wrapper input:not(:placeholder-shown) + .modern-floating-label,
+.input-wrapper textarea:focus + .modern-floating-label,
+.input-wrapper textarea:not(:placeholder-shown) + .modern-floating-label {
+  top: -0.5rem;
+  left: 2.5rem;
+  font-size: var(--fluid-text-sm);
+  color: #B8860B;
+  background: #fffaf3;
+  border-radius: 0.25rem;
+}
+
+/* Submit button responsive improvements */
+.modern-submit-btn {
+  width: 100%;
+  max-width: 300px;
+  padding: var(--fluid-spacing-md) var(--fluid-spacing-lg);
+  font-size: var(--fluid-text-base);
+  font-weight: 600;
+  border: none;
+  border-radius: 2rem;
+  background: linear-gradient(90deg, #EC1C24 0%, #D4AF37 100%);
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--fluid-spacing-sm);
+  min-height: 3.5rem;
+}
+
+/* ===== ENHANCED IMAGE RESPONSIVENESS ===== */
+
+/* Portfolio grid responsive improvements */
+.portfolio-grid-3x3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--fluid-spacing-lg);
+  padding: var(--fluid-spacing-lg);
+  max-width: var(--container-xl);
+  margin: 0 auto;
+}
+
+/* Portfolio card responsive improvements */
+.portfolio-card {
+  position: relative;
+  background: white;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0, 15, 51, 0.12);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  aspect-ratio: 4/3;
+  display: flex;
+  flex-direction: column;
+}
+
+.portfolio-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+  aspect-ratio: 4/3;
+}
+
+/* Portfolio content responsive positioning */
+.portfolio-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  color: white;
+  padding: var(--fluid-spacing-md);
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.portfolio-card:hover .portfolio-content {
+  transform: translateY(0);
+}
+
+.portfolio-content h3 {
+  font-size: var(--fluid-text-lg);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #D4AF37;
+}
+
+.portfolio-content p {
+  font-size: var(--fluid-text-sm);
+  color: #ffffff;
+  margin: 0;
+}
+
+/* ===== RESPONSIVE BREAKPOINTS ===== */
+
+/* Large screens (1200px and up) */
+@media (min-width: 1200px) {
+  .portfolio-grid-3x3 {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  
+  .contact-form {
+    max-width: var(--container-lg);
+    padding: 2rem;
+  }
+  
+  .form-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+/* Medium screens (768px to 1199px) */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .portfolio-grid-3x3 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  
+  .contact-form {
+    max-width: var(--container-md);
+    padding: 1.5rem;
+  }
+  
+  .form-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+
+/* Small screens (480px to 767px) */
+@media (min-width: 480px) and (max-width: 767px) {
+  .portfolio-grid-3x3 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    padding: 1rem;
+  }
+  
+  .contact-form {
+    padding: 1rem;
+  }
+  
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .input-wrapper input,
+  .input-wrapper textarea {
+    font-size: 16px; /* Prevents zoom on iOS */
+    padding: 0.875rem;
+    padding-left: 2.5rem;
+  }
+  
+  .modern-submit-btn {
+    max-width: 100%;
+    padding: 1rem 1.5rem;
+  }
+}
+
+/* Extra small screens (up to 479px) */
+@media (max-width: 479px) {
+  .portfolio-grid-3x3 {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 0.75rem;
+  }
+  
+  .contact-form {
+    padding: 0.75rem;
+  }
+  
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  
+  .input-wrapper input,
+  .input-wrapper textarea {
+    font-size: 16px; /* Prevents zoom on iOS */
+    padding: 0.75rem;
+    padding-left: 2.25rem;
+    min-height: 3rem;
+  }
+  
+  .input-wrapper textarea {
+    min-height: 6rem;
+  }
+  
+  .input-icon {
+    left: 0.75rem;
+    width: 1rem;
+    height: 1rem;
+  }
+  
+  .modern-floating-label {
+    left: 2.25rem;
+    font-size: 0.875rem;
+  }
+  
+  .input-wrapper input:focus + .modern-floating-label,
+  .input-wrapper input:not(:placeholder-shown) + .modern-floating-label,
+  .input-wrapper textarea:focus + .modern-floating-label,
+  .input-wrapper textarea:not(:placeholder-shown) + .modern-floating-label {
+    left: 2rem;
+    font-size: 0.75rem;
+  }
+  
+  .modern-submit-btn {
+    max-width: 100%;
+    padding: 0.875rem 1.25rem;
+    font-size: 0.875rem;
+    min-height: 3rem;
+  }
+  
+  .portfolio-content {
+    padding: 0.75rem;
+  }
+  
+  .portfolio-content h3 {
+    font-size: 1rem;
+  }
+  
+  .portfolio-content p {
+    font-size: 0.875rem;
+  }
+}
+
+/* ===== TOUCH DEVICE OPTIMIZATIONS ===== */
+
+/* Improve touch targets on mobile */
+@media (hover: none) and (pointer: coarse) {
+  .portfolio-card {
+    min-height: 200px;
+  }
+  
+  .modern-submit-btn {
+    min-height: 44px; /* Minimum touch target size */
+  }
+  
+  .input-wrapper input,
+  .input-wrapper textarea {
+    min-height: 44px; /* Minimum touch target size */
+  }
+  
+  /* Disable hover effects on touch devices */
+  .portfolio-card:hover {
+    transform: none;
+  }
+  
+  .portfolio-card:hover img {
+    transform: none;
+  }
+  
+  .portfolio-card:hover .portfolio-content {
+    transform: translateY(0);
+  }
+}
+
+/* ===== ACCESSIBILITY IMPROVEMENTS ===== */
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .input-wrapper input,
+  .input-wrapper textarea {
+    border-width: 3px;
+  }
+  
+  .modern-submit-btn {
+    border: 2px solid #000;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-card,
+  .input-wrapper input,
+  .input-wrapper textarea,
+  .modern-submit-btn,
+  .modern-floating-label {
+    transition: none;
+  }
+  
+  .portfolio-card:hover {
+    transform: none;
+  }
+}
+
+/* ===== PRINT STYLES ===== */
+
+@media print {
+  .contact-form,
+  .portfolio-card {
+    break-inside: avoid;
+  }
+  
+  .portfolio-card {
+    page-break-inside: avoid;
+  }
+  
+  .modern-submit-btn {
+    display: none;
+  }
+}
+
+/* ===== PERFORMANCE OPTIMIZATIONS ===== */
+
+/* Optimize for low-end devices */
+@media (max-width: 480px) {
+  .portfolio-card {
+    will-change: auto;
+  }
+  
+  .portfolio-card img {
+    will-change: auto;
+  }
+}
+
+/* ===== LANDSCAPE ORIENTATION OPTIMIZATIONS ===== */
+
+@media (orientation: landscape) and (max-height: 500px) {
+  .contact-form {
+    padding: 0.5rem;
+  }
+  
+  .form-grid {
+    gap: 0.5rem;
+  }
+  
+  .input-wrapper textarea {
+    min-height: 4rem;
+  }
+  
+  .portfolio-grid-3x3 {
+    gap: 0.75rem;
+    padding: 0.75rem;
+  }
+}
+
+/* ===== DARK MODE SUPPORT ===== */
+
+@media (prefers-color-scheme: dark) {
+  .input-wrapper input,
+  .input-wrapper textarea {
+    background: #1a1a1a;
+    border-color: #333;
+    color: #fff;
+  }
+  
+  .modern-floating-label {
+    color: #ccc;
+  }
+  
+  .input-wrapper input:focus + .modern-floating-label,
+  .input-wrapper input:not(:placeholder-shown) + .modern-floating-label,
+  .input-wrapper textarea:focus + .modern-floating-label,
+  .input-wrapper textarea:not(:placeholder-shown) + .modern-floating-label {
+    background: #1a1a1a;
+  }
+}

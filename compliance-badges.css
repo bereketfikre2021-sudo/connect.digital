@@ -1,0 +1,420 @@
+/* Compliance Badges and Trust Indicators for Connect Digitals */
+
+/* ===== COMPLIANCE BADGE STYLES ===== */
+
+.compliance-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.compliance-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 244, 239, 0.9) 100%);
+  border: 2px solid transparent;
+  border-radius: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 15, 51, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  text-decoration: none;
+  color: #000F33;
+  font-weight: 600;
+  font-size: 0.875rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.compliance-badge::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.compliance-badge:hover::before {
+  left: 100%;
+}
+
+.compliance-badge:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 15, 51, 0.15);
+  border-color: #D4AF37;
+  color: #000F33;
+}
+
+.compliance-badge:active {
+  transform: translateY(0);
+}
+
+.compliance-badge-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #EC1C24, #D4AF37);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+.compliance-badge-text {
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+}
+
+.compliance-badge-description {
+  font-size: 0.7rem;
+  opacity: 0.8;
+  font-weight: 500;
+  margin-top: 0.25rem;
+}
+
+/* ===== SPECIFIC BADGE STYLES ===== */
+
+/* GDPR Compliance Badge */
+.gdpr-badge {
+  background: linear-gradient(135deg, rgba(76, 175, 80, 0.1) 0%, rgba(76, 175, 80, 0.05) 100%);
+  border-color: rgba(76, 175, 80, 0.3);
+}
+
+.gdpr-badge .compliance-badge-icon {
+  background: linear-gradient(135deg, #4CAF50, #45a049);
+}
+
+.gdpr-badge:hover {
+  border-color: #4CAF50;
+  background: linear-gradient(135deg, rgba(76, 175, 80, 0.15) 0%, rgba(76, 175, 80, 0.1) 100%);
+}
+
+/* Data Protection Badge */
+.data-protection-badge {
+  background: linear-gradient(135deg, rgba(33, 150, 243, 0.1) 0%, rgba(33, 150, 243, 0.05) 100%);
+  border-color: rgba(33, 150, 243, 0.3);
+}
+
+.data-protection-badge .compliance-badge-icon {
+  background: linear-gradient(135deg, #2196F3, #1976D2);
+}
+
+.data-protection-badge:hover {
+  border-color: #2196F3;
+  background: linear-gradient(135deg, rgba(33, 150, 243, 0.15) 0%, rgba(33, 150, 243, 0.1) 100%);
+}
+
+/* Privacy Shield Badge */
+.privacy-shield-badge {
+  background: linear-gradient(135deg, rgba(156, 39, 176, 0.1) 0%, rgba(156, 39, 176, 0.05) 100%);
+  border-color: rgba(156, 39, 176, 0.3);
+}
+
+.privacy-shield-badge .compliance-badge-icon {
+  background: linear-gradient(135deg, #9C27B0, #7B1FA2);
+}
+
+.privacy-shield-badge:hover {
+  border-color: #9C27B0;
+  background: linear-gradient(135deg, rgba(156, 39, 176, 0.15) 0%, rgba(156, 39, 176, 0.1) 100%);
+}
+
+/* Secure Form Badge */
+.secure-form-badge {
+  background: linear-gradient(135deg, rgba(255, 193, 7, 0.1) 0%, rgba(255, 193, 7, 0.05) 100%);
+  border-color: rgba(255, 193, 7, 0.3);
+}
+
+.secure-form-badge .compliance-badge-icon {
+  background: linear-gradient(135deg, #FFC107, #FFA000);
+}
+
+.secure-form-badge:hover {
+  border-color: #FFC107;
+  background: linear-gradient(135deg, rgba(255, 193, 7, 0.15) 0%, rgba(255, 193, 7, 0.1) 100%);
+}
+
+/* ===== TRUST INDICATORS ===== */
+
+.trust-indicators {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem 0;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 0.75rem;
+  border: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.trust-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 1.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #000F33;
+  box-shadow: 0 2px 8px rgba(0, 15, 51, 0.08);
+  transition: all 0.3s ease;
+}
+
+.trust-indicator:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 15, 51, 0.12);
+}
+
+.trust-indicator-icon {
+  width: 1rem;
+  height: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #D4AF37;
+  color: white;
+  font-size: 0.6rem;
+  font-weight: bold;
+}
+
+/* ===== COMPLIANCE NOTICE ===== */
+
+.compliance-notice {
+  background: linear-gradient(135deg, rgba(248, 244, 239, 0.9) 0%, rgba(255, 255, 255, 0.9) 100%);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  text-align: center;
+  box-shadow: 0 4px 16px rgba(0, 15, 51, 0.08);
+}
+
+.compliance-notice h4 {
+  color: #000F33;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.compliance-notice p {
+  color: #222222;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.compliance-notice .notice-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  background: linear-gradient(135deg, #EC1C24, #D4AF37);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+/* ===== FOOTER SPECIFIC STYLES ===== */
+
+/* Ensure compliance badges are left-aligned in footer */
+.footer-bottom .compliance-badges {
+  justify-content: flex-start !important;
+  align-items: flex-start !important;
+  text-align: left !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: 0 !important;
+}
+
+.footer-bottom .compliance-badge {
+  justify-content: flex-start !important;
+  text-align: left !important;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+@media (max-width: 768px) {
+  .compliance-badges {
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  
+  .compliance-badge {
+    width: 100%;
+    justify-content: flex-start;
+    padding: 0.875rem 1rem;
+  }
+  
+  .trust-indicators {
+    flex-direction: column;
+    gap: 0.5rem;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  
+  .trust-indicator {
+    width: 100%;
+    justify-content: flex-start;
+  }
+  
+  .compliance-notice {
+    padding: 1rem;
+    margin: 1rem 0;
+  }
+  
+  .compliance-notice h4 {
+    font-size: 1rem;
+  }
+  
+  .compliance-notice p {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .compliance-badge {
+    padding: 0.75rem 0.875rem;
+    font-size: 0.8rem;
+  }
+  
+  .compliance-badge-icon {
+    width: 1.125rem;
+    height: 1.125rem;
+    font-size: 0.7rem;
+  }
+  
+  .compliance-badge-text {
+    font-size: 0.7rem;
+  }
+  
+  .trust-indicator {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.7rem;
+  }
+  
+  .trust-indicator-icon {
+    width: 0.875rem;
+    height: 0.875rem;
+    font-size: 0.5rem;
+  }
+}
+
+/* ===== ANIMATIONS ===== */
+
+@keyframes badgePulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.9;
+  }
+}
+
+.compliance-badge.animate {
+  animation: badgePulse 2s ease-in-out infinite;
+}
+
+.compliance-badge.animate:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.compliance-badge.animate:nth-child(3) {
+  animation-delay: 1s;
+}
+
+/* ===== ACCESSIBILITY ===== */
+
+.compliance-badge:focus {
+  outline: 3px solid #D4AF37;
+  outline-offset: 2px;
+}
+
+.compliance-badge:focus-visible {
+  outline: 3px solid #D4AF37;
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .compliance-badge {
+    border-width: 3px;
+  }
+  
+  .trust-indicator {
+    border: 2px solid #000;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .compliance-badge,
+  .trust-indicator {
+    transition: none;
+  }
+  
+  .compliance-badge.animate {
+    animation: none;
+  }
+}
+
+/* ===== DARK MODE SUPPORT ===== */
+
+@media (prefers-color-scheme: dark) {
+  .compliance-badge {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+    color: #ffffff;
+  }
+  
+  .trust-indicator {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+  }
+  
+  .compliance-notice {
+    background: linear-gradient(135deg, rgba(0, 15, 51, 0.9) 0%, rgba(34, 34, 34, 0.9) 100%);
+    color: #ffffff;
+  }
+  
+  .compliance-notice h4 {
+    color: #ffffff;
+  }
+  
+  .compliance-notice p {
+    color: #cccccc;
+  }
+}

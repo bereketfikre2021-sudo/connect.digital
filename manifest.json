@@ -1,0 +1,66 @@
+{
+  "name": "Connect Digitals - Professional Design Services",
+  "short_name": "Connect Digitals",
+  "description": "Professional graphic design, branding, and digital marketing services",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000F33",
+  "theme_color": "#000F33",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en",
+  "categories": ["business", "design", "marketing"],
+  "icons": [
+    {
+      "src": "Logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "favicon.ico",
+      "sizes": "16x16 32x32 48x48",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "BG.webp",
+      "sizes": "1200x630",
+      "type": "image/webp",
+      "form_factor": "wide",
+      "label": "Connect Digitals Homepage"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Our Services",
+      "short_name": "Services",
+      "description": "View our design services",
+      "url": "/#services",
+      "icons": [
+        {
+          "src": "Logo.svg",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Contact Us",
+      "short_name": "Contact",
+      "description": "Get in touch with us",
+      "url": "/#contact",
+      "icons": [
+        {
+          "src": "Logo.svg",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ]
+}
