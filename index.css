@@ -31,7 +31,10 @@
   background-attachment: scroll !important;
 }
 
-/* Import Merriweather Font */
+/* Import Montserrat Font */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* Import Merriweather Font for taglines and descriptions */
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
 
 html { scroll-behavior: smooth; }
@@ -51,9 +54,9 @@ body { margin: 0; padding: 0; overflow-x: hidden; }
   --spacing-section-mobile: 2rem;
   
   /* Brand Font Family */
-  --font-primary: 'Merriweather', serif;
-  --font-secondary: 'Merriweather', serif;
-  --font-heading: 'Merriweather', serif;
+  --font-primary: 'Montserrat', sans-serif;
+  --font-secondary: 'Montserrat', sans-serif;
+  --font-heading: 'Montserrat', sans-serif;
 }
 body {
   font-family: var(--font-primary);
@@ -62,6 +65,7 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+  padding-top: 70px; /* Account for fixed header */
 }
 
 main {
@@ -86,25 +90,221 @@ header.scrolled {
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
 }
 
-/* Glass morphism header styles */
-header {
-  background: rgba(255, 255, 255, 0.1);
+/* New Header Styles - Simple & Outstanding */
+.new-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(0, 15, 51, 0.95);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  color: var(--color-text-on-dark);
-  padding: 1rem 2rem;
+  border-bottom: 1px solid rgba(184, 134, 11, 0.3);
+  transition: all 0.3s ease;
+}
+
+.new-header.scrolled {
+  background: rgba(0, 15, 51, 0.98);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: sticky; 
-  top: 0;
-  z-index: 1002;
-  animation: navFadeIn 1s cubic-bezier(0.4,0,0.2,1);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  height: 70px;
+}
+
+.header-logo img {
+  height: 40px;
+  width: auto;
+  transition: transform 0.3s ease;
+}
+
+.header-logo img:hover {
+  transform: scale(1.05);
+}
+
+.header-nav {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.nav-link {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  position: relative;
+  transition: all 0.3s ease;
+  padding: 0.5rem 0;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #B8860B, #DAA520);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
   width: 100%;
-  box-sizing: border-box;
-  overflow: hidden;
+}
+
+.nav-link:hover {
+  color: #B8860B;
+  transform: translateY(-2px);
+}
+
+/* Mobile Toggle Button */
+.mobile-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1001;
+}
+
+.hamburger-line {
+  width: 100%;
+  height: 3px;
+  background: #ffffff;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+.mobile-toggle[aria-expanded="true"] .hamburger-line:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.mobile-toggle[aria-expanded="true"] .hamburger-line:nth-child(2) {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+.mobile-toggle[aria-expanded="true"] .hamburger-line:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Mobile Menu */
+.mobile-menu {
+  position: fixed;
+  top: 70px;
+  left: 0;
+  right: 0;
+  background: rgba(0, 15, 51, 0.98);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(184, 134, 11, 0.3);
+  transform: translateY(-100%);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 999;
+}
+
+.mobile-menu.active {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-menu-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.mobile-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.mobile-nav-link {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 500;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.mobile-nav-link:hover {
+  color: #B8860B;
+  padding-left: 1rem;
+}
+
+.mobile-nav-link::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #B8860B, #DAA520);
+  transition: width 0.3s ease;
+}
+
+.mobile-nav-link:hover::before {
+  width: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header-container {
+    padding: 0 1rem;
+  }
+  
+  .header-nav {
+    display: none;
+  }
+  
+  .mobile-toggle {
+    display: flex;
+  }
+  
+  .header-logo img {
+    height: 35px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding-top: 60px; /* Account for smaller header on mobile */
+  }
+  
+  .header-container {
+    padding: 0 1rem;
+    height: 60px;
+  }
+  
+  .mobile-menu {
+    top: 60px;
+  }
+  
+  .header-logo img {
+    height: 30px;
+  }
 }
 .logo { 
   font-family: var(--font-heading);
@@ -1031,7 +1231,7 @@ section {
   padding: 0;
   max-width: none;
   margin: 0;
-  width: 100vw;
+  width: 100%;
 }
 /* Brand Typography - All Headings */
 h1, h2, h3, h4, h5, h6 {
@@ -1057,7 +1257,7 @@ h2 {
   color: white;
   min-height: 100vh;
   height: 100vh;
-  width: 100vw;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1150,7 +1350,7 @@ h2 {
 
 /* Hero Tagline Styling */
 .hero-tagline {
-  font-family: var(--font-primary) !important;
+  font-family: 'Merriweather', serif !important;
   font-size: clamp(0.9rem, 2.2vw, 1.3rem);
   font-weight: 500;
   color: #ffffff;
@@ -1581,7 +1781,11 @@ h2 {
 }
 
 /* Portfolio titles - golden color with red hover */
-.portfolio-content p { color: #222222; font-size: .95rem; }
+.portfolio-content p { 
+  font-family: 'Merriweather', serif !important;
+  color: #222222; 
+  font-size: .95rem; 
+}
 
 .icon {
   font-size: 2.5rem; color: #EC1C24; margin-bottom: 0.5rem;
@@ -1825,6 +2029,7 @@ footer a:hover img {
 }
 
 .portfolio-content p {
+  font-family: 'Merriweather', serif !important;
   color: #222222;
   font-size: 0.95rem;
   line-height: 1.5;
@@ -2406,6 +2611,7 @@ nav a.active::after {
 }
 
 .about-tagline {
+  font-family: 'Merriweather', serif !important;
   opacity: 0;
   transform: translateY(20px);
   animation: fadeInUp 0.8s ease-out forwards;
@@ -2522,6 +2728,7 @@ nav a.active::after {
 }
 
 .about-tagline {
+  font-family: 'Merriweather', serif !important;
   font-size: 2.05rem;
   font-weight: bold;
   margin-top: 0;
@@ -3252,7 +3459,7 @@ nav a:focus, nav a:focus-visible {
   .hero {
     background-attachment: scroll;
     padding: 0;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     margin: 0;
   }
@@ -3785,6 +3992,7 @@ nav a.active::after {
 }
 
 .about-tagline {
+  font-family: 'Merriweather', serif !important;
   opacity: 0;
   transform: translateY(20px);
   animation: fadeInUp 0.8s ease-out forwards;
@@ -3901,6 +4109,7 @@ nav a.active::after {
 }
 
 .about-tagline {
+  font-family: 'Merriweather', serif !important;
   font-size: 2.05rem;
   font-weight: bold;
   margin-top: 0;
@@ -4632,7 +4841,7 @@ nav a:focus, nav a:focus-visible {
   .hero {
     background-attachment: scroll;
     padding: 0;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     margin: 0;
   }
@@ -5165,6 +5374,7 @@ nav a.active::after {
 }
 
 .about-tagline {
+  font-family: 'Merriweather', serif !important;
   opacity: 0;
   transform: translateY(20px);
   animation: fadeInUp 0.8s ease-out forwards;
@@ -5281,6 +5491,7 @@ nav a.active::after {
 }
 
 .about-tagline {
+  font-family: 'Merriweather', serif !important;
   font-size: 2.05rem;
   font-weight: bold;
   margin-top: 0;
@@ -6012,7 +6223,7 @@ nav a:focus, nav a:focus-visible {
   .hero {
     background-attachment: scroll;
     padding: 0;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     margin: 0;
   }
@@ -6545,6 +6756,7 @@ nav a.active::after {
 }
 
 .about-tagline {
+  font-family: 'Merriweather', serif !important;
   opacity: 0;
   transform: translateY(20px);
   animation: fadeInUp 0.8s ease-out forwards;
@@ -6661,6 +6873,7 @@ nav a.active::after {
 }
 
 .about-tagline {
+  font-family: 'Merriweather', serif !important;
   font-size: 2.05rem;
   font-weight: bold;
   margin-top: 0;
@@ -7392,7 +7605,7 @@ nav a:focus, nav a:focus-visible {
   .hero {
     background-attachment: scroll;
     padding: 0;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     margin: 0;
   }
@@ -7925,6 +8138,7 @@ nav a.active::after {
 }
 
 .about-tagline {
+  font-family: 'Merriweather', serif !important;
   opacity: 0;
   transform: translateY(20px);
   animation: fadeInUp 0.8s ease-out forwards;
@@ -8041,6 +8255,7 @@ nav a.active::after {
 }
 
 .about-tagline {
+  font-family: 'Merriweather', serif !important;
   font-size: 2.05rem;
   font-weight: bold;
   margin-top: 0;
@@ -8774,7 +8989,7 @@ nav a:focus, nav a:focus-visible {
   .hero {
     background-attachment: scroll;
     padding: 0;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     margin: 0;
   }
@@ -9101,7 +9316,7 @@ nav a:focus, nav a:focus-visible {
   top: -1rem;
   left: -0.5rem;
   opacity: 0.3;
-  font-family: 'Merriweather', serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .testimonial-text {
@@ -9113,7 +9328,7 @@ nav a:focus, nav a:focus-visible {
   padding-left: 2rem;
   position: relative;
   z-index: 1;
-  font-family: 'Merriweather', serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 /* Navigation Buttons */
@@ -9556,21 +9771,24 @@ nav a:focus, nav a:focus-visible {
 /* Services Section - Enhanced with Beautiful Animations */
 
 /* Ensure services section uses brand fonts */
-.services-heading,
-.services-subtitle,
-.service-content h3,
-.service-content p,
-.feature-tag {
-  font-family: var(--font-primary) !important;
+.services-heading {
+  font-family: 'Montserrat', sans-serif !important;
 }
 
-/* Service titles with brand colors - one for each service */
-.service-card:nth-child(1) .service-content h3 { color: #000F33 !important; }
-.service-card:nth-child(2) .service-content h3 { color: #D4AF37 !important; }
-.service-card:nth-child(3) .service-content h3 { color: #EC1C24 !important; }
-.service-card:nth-child(4) .service-content h3 { color: #222222 !important; }
-.service-card:nth-child(5) .service-content h3 { color: #B8860B !important; }
-.service-card:nth-child(6) .service-content h3 { color: #EC1C24 !important; }
+.services-subtitle,
+.service-content p,
+.feature-tag {
+  font-family: 'Merriweather', serif !important;
+}
+
+/* Service titles use Montserrat - Maximum specificity to ensure it overrides all rules */
+.services-section .service-card .service-content h3,
+.service-card .service-content h3,
+.service-content h3 {
+  font-family: 'Montserrat', sans-serif !important;
+}
+
+/* Service titles now use consistent brand navy blue color */
 
 /* Global font consistency - ensure all elements use brand fonts */
 * {
@@ -9580,6 +9798,15 @@ nav a:focus, nav a:focus-visible {
 /* Exceptions for secondary font (testimonials and quotes) */
 .quote-icon,
 .testimonial-text {
+  font-family: 'Merriweather', serif !important;
+}
+
+/* Additional description elements using Merriweather */
+.hero-description,
+.section-description,
+.about-description,
+.service-description,
+.portfolio-description {
   font-family: 'Merriweather', serif !important;
 }
 
@@ -9859,16 +10086,19 @@ nav a:focus, nav a:focus-visible {
 /* Remove icon scale for simplicity */
 
 .service-content h3 {
-  font-size: 1.5rem;
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 2.5rem;
   font-weight: 700;
-  color: #EC1C24;
-  margin-bottom: 1rem;
+  color: #000F33;
+  text-align: center;
+  margin-bottom: 2rem;
   transition: all 0.3s ease;
 }
 
 /* Remove title color change for simplicity */
 
 .service-content p {
+  font-family: 'Merriweather', serif !important;
   color: #666;
   line-height: 1.6;
   margin-bottom: 1.5rem;
@@ -9997,6 +10227,11 @@ nav a:focus, nav a:focus-visible {
   
   .services-subtitle {
     font-size: 1rem;
+  }
+  
+  .service-content h3 {
+    font-size: 1.75rem;
+    margin-bottom: 0.75rem;
   }
   
   .services-grid {
