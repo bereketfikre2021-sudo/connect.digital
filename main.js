@@ -46,22 +46,54 @@ document.addEventListener('DOMContentLoaded', function() {
   function initModalListeners() {
     // Service and portfolio card click handlers
     document.addEventListener('click', function(e) {
-      const target = e.target.closest('.service-card, .portfolio-card');
-      if (target) {
+      // Check for service learn more buttons first
+      const serviceButton = e.target.closest('.service-learn-more');
+      if (serviceButton) {
+        e.preventDefault();
+        console.log('Service button clicked:', serviceButton);
+        
+        const title = serviceButton.getAttribute('data-modal-title');
+        const content = serviceButton.getAttribute('data-modal-content');
+        
+        console.log('Modal data:', { title, content });
+        
+        if (title && content) {
+          // Track analytics if available
+          if (typeof trackEvent === 'function') {
+            trackEvent('modal_open', {
+              modal_type: 'service',
+              modal_title: title,
+              user_intent: 'information'
+            });
+          }
+          
+          console.log('Opening modal with:', title, content);
+          openModal(title, content);
+        } else {
+          console.error('Missing modal data:', { title, content });
+        }
+        return;
+      }
+      
+      // Check for portfolio cards
+      const target = e.target.closest('.portfolio-card');
+      if (target && target.hasAttribute('data-modal-title')) {
+        e.preventDefault();
+        
         const title = target.getAttribute('data-modal-title');
         const content = target.getAttribute('data-modal-content');
         
         if (title && content) {
-          openModal(title, content);
-          
-          // Track analytics
+          // Track analytics if available
           if (typeof trackEvent === 'function') {
             trackEvent('modal_open', {
-              modal_type: target.classList.contains('service-card') ? 'service' : 'portfolio',
+              modal_type: 'portfolio',
               modal_title: title,
-              user_intent: 'content_exploration'
+              user_intent: 'information'
             });
           }
+          
+          openModal(title, content);
         }
       }
     });

@@ -3,9 +3,17 @@ let modalLastFocusedElement = null;
 let modalFocusableElements = [];
 
 function openModal(title, text) {
+  console.log('openModal called with:', title, text);
   const modal = document.getElementById('modal');
   const modalTitle = document.getElementById('modal-title');
   const modalDesc = document.getElementById('modal-desc');
+  
+  console.log('Modal elements:', { modal, modalTitle, modalDesc });
+  
+  if (!modal || !modalTitle || !modalDesc) {
+    console.error('Modal elements not found!');
+    return;
+  }
   
   // Set modal content
   modalTitle.innerText = title;
@@ -101,7 +109,31 @@ document.addEventListener('click', function(e) {
 function initModalListeners() {
   // Handle service and portfolio card clicks
   document.addEventListener('click', function(e) {
-    const target = e.target.closest('.service-card, .portfolio-card');
+    // Check for service learn more buttons first
+    const serviceButton = e.target.closest('.service-learn-more');
+    if (serviceButton) {
+      e.preventDefault();
+      
+      const title = serviceButton.getAttribute('data-modal-title');
+      const content = serviceButton.getAttribute('data-modal-content');
+      
+      if (title && content) {
+        // Track analytics if available
+        if (typeof trackEvent === 'function') {
+          trackEvent('modal_open', {
+            modal_type: 'service',
+            modal_title: title,
+            user_intent: 'information'
+          });
+        }
+        
+        openModal(title, content);
+      }
+      return;
+    }
+    
+    // Check for portfolio cards
+    const target = e.target.closest('.portfolio-card');
     if (target && target.hasAttribute('data-modal-title')) {
       e.preventDefault();
       
@@ -111,7 +143,7 @@ function initModalListeners() {
       // Track analytics if available
       if (typeof trackEvent === 'function') {
         trackEvent('modal_open', {
-          modal_type: target.classList.contains('service-card') ? 'service' : 'portfolio',
+          modal_type: 'portfolio',
           modal_title: title,
           user_intent: 'information'
         });

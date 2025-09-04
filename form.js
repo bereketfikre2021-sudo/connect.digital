@@ -159,7 +159,7 @@ function initForm() {
       .then(async (response) => {
         const data = await response.json().catch(() => ({}));
         if (response.ok) {
-          successModal.style.display = 'flex';
+          successModal.style.display = 'block';
           // Accessible toast announcement
           let toast = document.getElementById('sr-toast');
           if (!toast) {
@@ -247,6 +247,16 @@ function initForm() {
         closeSuccessModal();
       }
     });
+    
+    // Also close when clicking on the modal content background
+    const modalContent = successModal.querySelector('.modal-content');
+    if (modalContent) {
+      modalContent.addEventListener('click', function(e) {
+        if (e.target === this) {
+          closeSuccessModal();
+        }
+      });
+    }
   }
 
   if (window.__DEBUG__) console.log('Form setup complete!');

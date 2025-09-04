@@ -94,12 +94,24 @@ function initTestimonials() {
         page.style.setProperty('opacity', '1', 'important');
         page.style.setProperty('transform', 'translateY(0)', 'important');
         page.style.setProperty('visibility', 'visible', 'important');
+        console.log(`Page ${i} shown:`, {
+          display: page.style.display,
+          opacity: page.style.opacity,
+          visibility: page.style.visibility,
+          transform: page.style.transform
+        });
       } else {
         // Hide other pages with !important to override CSS
         page.style.setProperty('display', 'none', 'important');
         page.style.setProperty('opacity', '0', 'important');
         page.style.setProperty('transform', 'translateY(30px)', 'important');
         page.style.setProperty('visibility', 'hidden', 'important');
+        console.log(`Page ${i} hidden:`, {
+          display: page.style.display,
+          opacity: page.style.opacity,
+          visibility: page.style.visibility,
+          transform: page.style.transform
+        });
       }
     });
     
@@ -114,12 +126,12 @@ function initTestimonials() {
     
     // Update button text based on current page
     if (seeMoreBtn) {
-      const btnText = seeMoreBtn.querySelector('.fancy-btn-text');
+      const btnText = seeMoreBtn.querySelector('.btn-text');
       if (btnText) {
         if (idx === 0) {
           btnText.textContent = 'See More Reviews';
         } else {
-          btnText.textContent = 'See First Reviews';
+          btnText.textContent = 'See Previous Reviews';
         }
       }
     }
@@ -223,6 +235,19 @@ function initTestimonials() {
       currentPage = (currentPage + 1) % pages.length;
       console.log('Switching to page:', currentPage);
       showPage(currentPage);
+      
+      // Debug: Check if pages are switching
+      setTimeout(() => {
+        console.log('After page switch:');
+        pages.forEach((page, index) => {
+          console.log(`Page ${index}:`, {
+            display: page.style.display,
+            opacity: page.style.opacity,
+            visibility: page.style.visibility,
+            transform: page.style.transform
+          });
+        });
+      }, 100);
     });
   } else {
     console.error('See more button not found!');
